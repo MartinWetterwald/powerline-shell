@@ -13,8 +13,11 @@ class Color(DefaultColor):
     HOME_SPECIAL_DISPLAY = True
     HOME_BG = 31  # blueish
     HOME_FG = 15  # white
+
     PATH_BG = 237  # dark grey
     PATH_FG = 250  # light grey
+
+    CWD_SPECIAL_DISPLAY = True
     CWD_BG = 7
     CWD_FG = 0
     SEPARATOR_FG = 244
