@@ -22,12 +22,16 @@ def add_cwd_segment():
         names = names[:2] + [u'\u2026'] + names[2 - max_depth:]
 
     if not powerline.args.cwd_only:
-        for n in names[:-1]:
+        for n in names[:-2]:
+            powerline.append(' %s ' % n, Color.PATH_FG, Color.PATH_BG,
+                powerline.separator_thin, Color.SEPARATOR_FG)
+
+        if len(names) >= 2:
+            n = names[-2]
             if n == '~' and Color.HOME_SPECIAL_DISPLAY:
                 powerline.append(' %s ' % n, Color.HOME_FG, Color.HOME_BG)
             else:
-                powerline.append(' %s ' % n, Color.PATH_FG, Color.PATH_BG,
-                    powerline.separator_thin, Color.SEPARATOR_FG)
+                powerline.append(' %s ' % n, Color.PATH_FG, Color.PATH_BG)
 
     if names[-1] == '~' and Color.HOME_SPECIAL_DISPLAY:
         powerline.append(' %s ' % names[-1], Color.HOME_FG, Color.HOME_BG)
