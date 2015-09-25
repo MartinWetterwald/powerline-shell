@@ -17,7 +17,6 @@ class Color(DefaultColor):
     PATH_BG = 237  # dark grey
     PATH_FG = 250  # light grey
 
-    CWD_SPECIAL_DISPLAY = True
     CWD_BG = 7
     CWD_FG = 0
     SEPARATOR_FG = 244
