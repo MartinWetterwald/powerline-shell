@@ -17,7 +17,6 @@ class DefaultColor:
     PATH_BG = 237  # dark grey
     PATH_FG = 250  # light grey
 
-    CWD_SPECIAL_DISPLAY = False
     CWD_FG = 0
     CWD_BG = 7
 
