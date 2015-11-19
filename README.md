@@ -5,14 +5,34 @@ A [Powerline](https://github.com/Lokaltog/vim-powerline) like prompt for Bash, Z
 
 ![MacVim+Solarized+Powerline+CtrlP](https://raw.github.com/milkbikis/dotfiles-mac/master/bash-powerline-screenshot.png)
 
-*  Shows some important details about the git/svn/hg/fossil branch:
-    *  Displays the current branch which changes background color when the branch is dirty
-    *  A '+' appears when untracked files are present
-    *  When the local branch differs from the remote, the difference in number of commits is shown along with '⇡' or '⇣' indicating whether a git push or pull is pending
+*  Shows some important details about the git/svn/hg/fossil branch (see below)
 *  Changes color if the last command exited with a failure code
 *  If you're too deep into a directory tree, shortens the displayed path with an ellipsis
 *  Shows the current Python [virtualenv](http://www.virtualenv.org/) environment
 *  It's easy to customize and extend. See below for details.
+
+### Version Control
+
+All of the version control systems supported by powerline shell give you a
+quick look into the state of your repo:
+
+* The current branch is displayed and changes background color when the
+  branch is dirty.
+* When the local branch differs from the remote, the difference in number
+  of commits is shown along with `⇡` or `⇣` indicating whether a git push
+  or pull is pending
+
+In addition, git has a few extra symbols:
+
+* `✎` -- a file has been modified, but not staged for commit
+* `✔` -- a file is staged for commit
+* `✼` -- a file has conflicts
+
+FIXME
+    *  A `+` appears when untracked files are present (except for git, which
+       uses `?` instead)
+
+Each of these will have a number next to it if more than one file matches.
 
 # Setup
 
@@ -53,6 +73,9 @@ There are a few optional arguments which can be seen by running `powerline-shell
                         How to display the current directory
   --cwd-max-depth CWD_MAX_DEPTH
                         Maximum number of directories to show in path
+  --cwd-max-dir-size CWD_MAX_DIR_SIZE
+                        Maximum number of letters displayed for each directory
+                        in the path
   --colorize-hostname   Colorize the hostname based on a hash of itself.
   --mode {patched,compatible,flat}
                         The characters used to make separators between
@@ -137,6 +160,24 @@ a theme, please test your theme on multiple terminals, especially with default
 settings.
 
 # Changes
+
+2015-11-18
+
+* The git segment has gotten a makeover
+  ([@MartinWetterwald](https://github.com/milkbikis/powerline-shell/pull/136))
+* Fix git segment when git is not on the standard PATH
+  ([@andrejgl](https://github.com/milkbikis/powerline-shell/pull/153))
+* Fix `--cwd-max-depth` showing duplicates when it's <= 2
+  ([@b-ryan](https://github.com/milkbikis/powerline-shell/pull/209))
+* Add padding around `exit_code` segment
+  ([@phatblat](https://github.com/milkbikis/powerline-shell/pull/205))
+
+2015-10-02
+
+* New option (`--cwd-max-dir-size`) which allows you to limit each directory
+  that is displayed to a number of characters. This currently does not apply
+  if you are using `--cwd-mode plain`.
+  ([@mart-e](https://github.com/milkbikis/powerline-shell/pull/127))
 
 2015-08-26
 
