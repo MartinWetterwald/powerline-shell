@@ -83,6 +83,8 @@ def add_cwd_segment():
         if requires_special_home_display(name) or is_last_dir:
             separator = None
             separator_fg = None
+        if is_last_dir and (name != '~' or not requires_special_home_display(name)):
+            fg, bg = (Color.CWD_FG, Color.CWD_BG)
 
         powerline.append(' %s ' % maybe_shorten_name(name), fg, bg,
                          separator, separator_fg)
